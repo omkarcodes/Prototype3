@@ -9,7 +9,7 @@ public class SpawnManager : MonoBehaviour
     Vector3 spawnPos = new Vector3(25, 0, 0);
     
     float startDelay = 2f;
-    float SpawnInterval = 1.5f;
+    float SpawnInterval = 2f;
     PlayerController playerController;
    
 
