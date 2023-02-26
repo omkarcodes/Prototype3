@@ -642,8 +642,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 991eb8f43ee2b7a4db6810d4d13d4f44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstaclePrefab: {fileID: 1537676812421730046, guid: e3cbb4896e513bf49a541a9d0c462681,
-    type: 3}
+  randomObstacleSpawn:
+  - {fileID: 6836021491481639892, guid: 023bb977285b7e34dbb693805d377896, type: 3}
+  - {fileID: 8924950583017256999, guid: 379bf060185e16e4aa651e1fb2ee4e21, type: 3}
+  - {fileID: 6015379280802832618, guid: 430c7d1226ae7f64492718aa3aed8554, type: 3}
+  - {fileID: 3082642257187877378, guid: 056f67e57bf81704caf532bd6f28b0a5, type: 3}
+  - {fileID: 4031934683285563396, guid: 8a5916fd1cc261144acd05902fac54bc, type: 3}
+  - {fileID: 8110584363344113069, guid: 356153a1d7f16c649bdb6b6ee36537bd, type: 3}
+  - {fileID: 8863431258438926026, guid: 06a3a8e5728b9044597a05e82b1666fe, type: 3}
+  - {fileID: 4759628868862564521, guid: e7e13cba7333d4948b22d3c6fa58d6af, type: 3}
+  - {fileID: 6882273266724067461, guid: 0052501a2bd571e41bda44a6805d04ad, type: 3}
+  - {fileID: 8189671193685715995, guid: 4a632f2a38f54e246ade174012e21226, type: 3}
 --- !u!1001 &1450026000
 PrefabInstance:
   m_ObjectHideFlags: 0

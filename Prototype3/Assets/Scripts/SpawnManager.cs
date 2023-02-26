@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public GameObject obstaclePrefab;
-    Vector3 spawnPos = new Vector3(25, 0, 0);
     float startDelay = 2f;
     float SpawnInterval = 2f;
+    int spawnIndex;
+
+    public GameObject[] randomObstacleSpawn;
+    
+
+    Vector3 spawnPos = new Vector3(25, 0, 0);
     PlayerController playerController;
    
 
@@ -16,18 +20,21 @@ public class SpawnManager : MonoBehaviour
     {
         InvokeRepeating("SpawnObstacle", startDelay, SpawnInterval);
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        spawnIndex = Random.Range(0, randomObstacleSpawn.Length);
     }
     void SpawnObstacle()
     {
-        if(playerController.gameOver == false)
+        GameObject spawnObject = randomObstacleSpawn[spawnIndex];
+        Quaternion spawnRotation = randomObstacleSpawn[spawnIndex].transform.rotation;
+        if (playerController.gameOver == false)
         {
-            Instantiate(obstaclePrefab, spawnPos, obstaclePrefab.transform.rotation);
+            Instantiate(spawnObject, spawnPos, spawnRotation);
         }
         
        

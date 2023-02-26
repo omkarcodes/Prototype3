@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     public float gravityModifier;
     public bool isOnGround = true;
     public bool gameOver;
+    
+    
 
     // Start is called before the first frame update
     void Start()
@@ -44,13 +46,13 @@ public class PlayerController : MonoBehaviour
             isOnGround = false;
             playerAnim.SetTrigger("Jump_trig");
             playerAudio.PlayOneShot(jumpSound, 1.0f);
-            
         }
     }
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.CompareTag("Ground"))
         {
+            
             isOnGround = true;
         }else if(collision.gameObject.CompareTag("Obstacle"))
         {
@@ -66,4 +68,5 @@ public class PlayerController : MonoBehaviour
         }
         
     }
+   
 }
