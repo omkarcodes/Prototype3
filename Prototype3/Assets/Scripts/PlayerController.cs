@@ -15,16 +15,17 @@ public class PlayerController : MonoBehaviour
     public AudioClip jumpSound;
     public AudioClip crashSound;
     public AudioClip gameOverSound;
-    public float jumpForce = 10;
+    public float jumpForce = 20;
     public float gravityModifier;
     public bool isOnGround = true;
     public bool gameOver;
-    
-    
-
+    public bool doubleJumpUsed = false;
+    float doubleJumpForce = 300;
+ 
     // Start is called before the first frame update
     void Start()
     {
+        
         cameraAudio = mainCamera.GetComponent<AudioSource>();
         playerAudio = GetComponent<AudioSource>();
         playerRb = GetComponent<Rigidbody>();
@@ -35,24 +36,13 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isOnGround == false)
-        {
-            dirtSplatter.Play();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !gameOver)
-        {
-            playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse); //give the player a movement in y axis as the user presses space
-            isOnGround = false;
-            playerAnim.SetTrigger("Jump_trig");
-            playerAudio.PlayOneShot(jumpSound, 1.0f);
-        }
+        UserInput();
+       
     }
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.CompareTag("Ground"))
         {
-            
             isOnGround = true;
         }else if(collision.gameObject.CompareTag("Obstacle"))
         {
@@ -68,5 +58,29 @@ public class PlayerController : MonoBehaviour
         }
         
     }
-   
+
+    public void UserInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !gameOver)
+        {
+            playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse); //give the player a movement in y axis as the user presses space
+            isOnGround = false;
+            playerAnim.SetTrigger("Jump_trig");
+            dirtSplatter.Stop();
+            playerAudio.PlayOneShot(jumpSound, 1.0f);
+
+            doubleJumpUsed = false;
+        } 
+        else if(Input.GetKeyDown(KeyCode.Space) && !isOnGround && !doubleJumpUsed)
+        {
+            doubleJumpUsed = true;
+            playerRb.AddForce(Vector3.up * doubleJumpForce, ForceMode.Impulse);
+            playerAnim.Play("Running_Jump", 3, 0f);
+            playerAudio.PlayOneShot(jumpSound, 1.0f);
+        }
+
+
+    }
+    
+
 }

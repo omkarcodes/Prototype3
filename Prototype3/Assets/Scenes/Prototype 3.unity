@@ -905,7 +905,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 114
   m_CollisionDetection: 0
 --- !u!114 &2100828441
 MonoBehaviour:
@@ -929,6 +929,7 @@ MonoBehaviour:
   gravityModifier: 1.7
   isOnGround: 1
   gameOver: 0
+  doubleJumpUsed: 0
 --- !u!4 &2100828442 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 0703a1849c2c89b4db4568688faf0c5f,
